@@ -1,5 +1,8 @@
-Half Life 1 SDK LICENSE
-======================
+# SHOOTER TOURNEYS
+This repository contains the game DLL for [Shooter Tourneys.](https://www.moddb.com/mods/shooter-tourneys)
+Please note that this is the **GAME DLL** (creative.dll) which contains the weapons and gamemode code and not the **CLIENT DLL**. The **CLIENT DLL** is a modified version of grAyG and can be found on [here.](https://github.com/thephoenixprojectsoftware/grayg)
+
+# Half Life 1 SDK LICENSE
 
 Half Life 1 SDK Copyright© Valve Corp.  
 
@@ -19,32 +22,7 @@ LIMITATION OF LIABILITY.  IN NO EVENT SHALL VALVE OR ITS SUPPLIERS BE LIABLE FOR
 If you would like to use the SDK for a commercial purpose, please contact Valve at sourceengine@valvesoftware.com.
 
 
-Half-Life 1
-======================
-
-This is the README for the Half-Life 1 engine and its associated games.
-
-Please use this repository to report bugs and feature requests for Half-Life 1 related products.
-
-Reporting Issues
-----------------
-
-If you encounter an issue while using Half-Life 1 games, first search the [issue list](https://github.com/ValveSoftware/halflife/issues) to see if it has already been reported. Include closed issues in your search.
-
-If it has not been reported, create a new issue with at least the following information:
-
-- a short, descriptive title;
-- a detailed description of the issue, including any output from the command line;
-- steps for reproducing the issue;
-- your system information.\*; and
-- the `version` output from the in‐game console.
-
-Please place logs either in a code block (press `M` in your browser for a GFM cheat sheet) or a [gist](https://gist.github.com).
-
-\* The preferred and easiest way to get this information is from Steam's Hardware Information viewer from the menu (`Help -> System Information`). Once your information appears: right-click within the dialog, choose `Select All`, right-click again, and then choose `Copy`. Paste this information into your report, preferably in a code block.
-
-Conduct
--------
+# Conduct
 
 
 There are basic rules of conduct that should be followed at all times by everyone participating in the discussions.  While this is generally a relaxed environment, please remember the following:

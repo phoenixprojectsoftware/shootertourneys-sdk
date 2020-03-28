@@ -26,9 +26,9 @@
 void AgInitTimer();
 
 #ifdef AG_NO_CLIENT_DLL
-DLL_GLOBAL cvar_t	ag_version = { "sv_ag_version","6.7mini", FCVAR_SERVER };
+DLL_GLOBAL cvar_t	ag_version = { "sv_ag_version","6.8mini", FCVAR_SERVER };
 #else
-DLL_GLOBAL cvar_t	ag_version = { "sv_ag_version","6.7", FCVAR_SERVER };
+DLL_GLOBAL cvar_t	ag_version = { "sv_ag_version","6.8C", FCVAR_SERVER };
 #endif
 
 DLL_GLOBAL cvar_t	ag_gamemode = { "sv_ag_gamemode","ffa", FCVAR_SERVER }; //The current gamemode
