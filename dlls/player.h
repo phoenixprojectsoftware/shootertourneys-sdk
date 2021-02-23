@@ -26,9 +26,12 @@
 extern int gmsgSpectator;
 //-- Martin Webrant
 
+// Number of frames where -showscores will be triggered to try and fix invisible menus blocking mouse and other input
+#define INPUT_FIX_FRAMES	3
 
 #define PLAYER_FATAL_FALL_SPEED		1024// approx 60 feet
 #define PLAYER_MAX_SAFE_FALL_SPEED	580// approx 20 feet
+#define PLAYER_FALL_DAMAGE			10
 #define DAMAGE_FOR_FALL_SPEED		(float) 100 / ( PLAYER_FATAL_FALL_SPEED - PLAYER_MAX_SAFE_FALL_SPEED )// damage per unit per second.
 #define PLAYER_MIN_BOUNCE_SPEED		200
 #define PLAYER_FALL_PUNCH_THRESHHOLD (float)350 // won't punch player's screen/make scrape noise unless player falling at least this fast.
@@ -124,6 +127,11 @@ public:
 	int					m_afButtonLast;
 	int					m_afButtonPressed;
 	int					m_afButtonReleased;
+	int					m_afButtonOriginal;		// buttons that the player has pressed at the start of the frame (no processing yet)
+	int					m_afButtonOnLoad;		// buttons that the player has pressed right before starting a load, and that should be kept in the meanwhile
+
+	int					m_fLoading;	// when loading a save or map in singleplayer
+	float				m_flInputFixReady; // global time at which we guess mouse input should have been fixed already after some -showscores spam
 	
 	edict_t			   *m_pentSndLast;			// last sound entity to modify player room type
 	float				m_flSndRoomtype;		// last roomtype set by sound entity

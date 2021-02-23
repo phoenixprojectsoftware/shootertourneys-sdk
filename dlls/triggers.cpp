@@ -1471,7 +1471,7 @@ void CChangeLevel :: ChangeLevelNow( CBaseEntity *pActivator )
 	ASSERT(!FStrEq(m_szMapName, ""));
 
 	// Don't work in deathmatch
-	if ( g_pGameRules->IsDeathmatch() )
+	if ( g_pGameRules->IsDeathmatch() && CVAR_GET_FLOAT("sv_singleplayer") == 0.0f )
 		return;
 
 	// Some people are firing these multiple times in a frame, disable
@@ -1952,7 +1952,7 @@ LINK_ENTITY_TO_CLASS( trigger_autosave, CTriggerSave );
 
 void CTriggerSave::Spawn( void )
 {
-	if ( g_pGameRules->IsDeathmatch() )
+	if ( g_pGameRules->IsDeathmatch() && CVAR_GET_FLOAT("sv_singleplayer") == 0.0f )
 	{
 		REMOVE_ENTITY( ENT(pev) );
 		return;
@@ -2006,7 +2006,7 @@ void CTriggerEndSection::EndSectionUse( CBaseEntity *pActivator, CBaseEntity *pC
 
 void CTriggerEndSection::Spawn( void )
 {
-	if ( g_pGameRules->IsDeathmatch() )
+	if ( g_pGameRules->IsDeathmatch() && CVAR_GET_FLOAT("sv_singleplayer") == 0.0f )
 	{
 		REMOVE_ENTITY( ENT(pev) );
 		return;

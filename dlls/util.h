@@ -156,6 +156,7 @@ inline BOOL FStringNull(int iString)			{ return iString == iStringNull; }
 
 // All monsters need this data
 #define		DONT_BLEED			-1
+#define		BLOOD_COLOR_ORANGE	(BYTE)105
 #define		BLOOD_COLOR_RED		(BYTE)247
 #define		BLOOD_COLOR_YELLOW	(BYTE)195
 #define		BLOOD_COLOR_GREEN	BLOOD_COLOR_YELLOW
@@ -414,6 +415,9 @@ extern DLL_GLOBAL int			g_Language;
 #define VEC_DUCK_HULL_MIN	Vector(-16, -16, -18 )
 #define VEC_DUCK_HULL_MAX	Vector( 16,  16,  18)
 #define VEC_DUCK_VIEW		Vector( 0, 0, 12 )
+
+#define VEC_LARGE_HULL_MIN	Vector(-32, -32, -32)
+#define VEC_LARGE_HULL_MAX	Vector(32, 32, 32)
 
 #define SVC_TEMPENTITY		23
 #define SVC_INTERMISSION	30

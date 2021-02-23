@@ -904,9 +904,14 @@ BOOL CBaseMonster :: CineCleanup( )
 		// Can't call killed() no attacker and weirdness (late gibbing) may result
 		m_IdealMonsterState = MONSTERSTATE_DEAD;
 		SetConditions( bits_COND_LIGHT_DAMAGE );
-		pev->deadflag = DEAD_DYING;
+		pev->deadflag	= DEAD_DYING;
+
+		if (!FBitSet(pev->spawnflags, SF_MONSTER_SOLID_CORPSE)) {
+			pev->solid = SOLID_NOT;
+		}
+
 		FCheckAITrigger();
-		pev->deadflag = DEAD_NO;
+		pev->deadflag	= DEAD_NO;
 	}
 
 

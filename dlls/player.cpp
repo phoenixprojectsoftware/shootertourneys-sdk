@@ -69,55 +69,68 @@ extern CGraph	WorldGraph;
 #define	FLASH_CHARGE_TIME	 0.2 // 100 units/20 seconds  (seconds per unit)
 
 // Global Savedata for player
-TYPEDESCRIPTION	CBasePlayer::m_playerSaveData[] = 
+TYPEDESCRIPTION	CBasePlayer::m_playerSaveData[] =
 {
-	DEFINE_FIELD( CBasePlayer, m_flFlashLightTime, FIELD_TIME ),
-	DEFINE_FIELD( CBasePlayer, m_iFlashBattery, FIELD_INTEGER ),
+	DEFINE_FIELD(CBasePlayer, m_flFlashLightTime, FIELD_TIME),
+	DEFINE_FIELD(CBasePlayer, m_iFlashBattery, FIELD_INTEGER),
 
-	DEFINE_FIELD( CBasePlayer, m_afButtonLast, FIELD_INTEGER ),
-	DEFINE_FIELD( CBasePlayer, m_afButtonPressed, FIELD_INTEGER ),
-	DEFINE_FIELD( CBasePlayer, m_afButtonReleased, FIELD_INTEGER ),
+	DEFINE_FIELD(CBasePlayer, m_afButtonLast, FIELD_INTEGER),
+	DEFINE_FIELD(CBasePlayer, m_afButtonPressed, FIELD_INTEGER),
+	DEFINE_FIELD(CBasePlayer, m_afButtonReleased, FIELD_INTEGER),
+	DEFINE_FIELD(CBasePlayer, m_afButtonOriginal, FIELD_INTEGER),
+	DEFINE_FIELD(CBasePlayer, m_afButtonOnLoad, FIELD_INTEGER),
 
-	DEFINE_ARRAY( CBasePlayer, m_rgItems, FIELD_INTEGER, MAX_ITEMS ),
-	DEFINE_FIELD( CBasePlayer, m_afPhysicsFlags, FIELD_INTEGER ),
+	DEFINE_ARRAY(CBasePlayer, m_rgItems, FIELD_INTEGER, MAX_ITEMS),
+	DEFINE_FIELD(CBasePlayer, m_afPhysicsFlags, FIELD_INTEGER),
 
-	DEFINE_FIELD( CBasePlayer, m_flTimeStepSound, FIELD_TIME ),
-	DEFINE_FIELD( CBasePlayer, m_flTimeWeaponIdle, FIELD_TIME ),
-	DEFINE_FIELD( CBasePlayer, m_flSwimTime, FIELD_TIME ),
-	DEFINE_FIELD( CBasePlayer, m_flDuckTime, FIELD_TIME ),
-	DEFINE_FIELD( CBasePlayer, m_flWallJumpTime, FIELD_TIME ),
+	DEFINE_FIELD(CBasePlayer, m_flTimeStepSound, FIELD_TIME),
+	DEFINE_FIELD(CBasePlayer, m_flTimeWeaponIdle, FIELD_TIME),
+	DEFINE_FIELD(CBasePlayer, m_flSwimTime, FIELD_TIME),
+	DEFINE_FIELD(CBasePlayer, m_flDuckTime, FIELD_TIME),
+	DEFINE_FIELD(CBasePlayer, m_flWallJumpTime, FIELD_TIME),
 
-	DEFINE_FIELD( CBasePlayer, m_flSuitUpdate, FIELD_TIME ),
-	DEFINE_ARRAY( CBasePlayer, m_rgSuitPlayList, FIELD_INTEGER, CSUITPLAYLIST ),
-	DEFINE_FIELD( CBasePlayer, m_iSuitPlayNext, FIELD_INTEGER ),
-	DEFINE_ARRAY( CBasePlayer, m_rgiSuitNoRepeat, FIELD_INTEGER, CSUITNOREPEAT ),
-	DEFINE_ARRAY( CBasePlayer, m_rgflSuitNoRepeatTime, FIELD_TIME, CSUITNOREPEAT ),
-	DEFINE_FIELD( CBasePlayer, m_lastDamageAmount, FIELD_INTEGER ),
+	DEFINE_FIELD(CBasePlayer, m_flSuitUpdate, FIELD_TIME),
+	DEFINE_ARRAY(CBasePlayer, m_rgSuitPlayList, FIELD_INTEGER, CSUITPLAYLIST),
+	DEFINE_FIELD(CBasePlayer, m_iSuitPlayNext, FIELD_INTEGER),
+	DEFINE_ARRAY(CBasePlayer, m_rgiSuitNoRepeat, FIELD_INTEGER, CSUITNOREPEAT),
+	DEFINE_ARRAY(CBasePlayer, m_rgflSuitNoRepeatTime, FIELD_TIME, CSUITNOREPEAT),
+	DEFINE_FIELD(CBasePlayer, m_lastDamageAmount, FIELD_INTEGER),
 
-	DEFINE_ARRAY( CBasePlayer, m_rgpPlayerItems, FIELD_CLASSPTR, MAX_ITEM_TYPES ),
-	DEFINE_FIELD( CBasePlayer, m_pActiveItem, FIELD_CLASSPTR ),
-	DEFINE_FIELD( CBasePlayer, m_pLastItem, FIELD_CLASSPTR ),
+	DEFINE_ARRAY(CBasePlayer, m_rgpPlayerItems, FIELD_CLASSPTR, MAX_ITEM_TYPES),
+	DEFINE_FIELD(CBasePlayer, m_pActiveItem, FIELD_CLASSPTR),
+	DEFINE_FIELD(CBasePlayer, m_pLastItem, FIELD_CLASSPTR),
+
+	DEFINE_ARRAY(CBasePlayer, m_rgAmmo, FIELD_INTEGER, MAX_AMMO_SLOTS),
+	DEFINE_FIELD(CBasePlayer, m_idrowndmg, FIELD_INTEGER),
+	DEFINE_FIELD(CBasePlayer, m_idrownrestored, FIELD_INTEGER),
+	DEFINE_FIELD(CBasePlayer, m_tSneaking, FIELD_TIME),
+
+	DEFINE_FIELD(CBasePlayer, m_iTrain, FIELD_INTEGER),
+	DEFINE_FIELD(CBasePlayer, m_bitsHUDDamage, FIELD_INTEGER),
+	DEFINE_FIELD(CBasePlayer, m_flFallVelocity, FIELD_FLOAT),
+	DEFINE_FIELD(CBasePlayer, m_iTargetVolume, FIELD_INTEGER),
+	DEFINE_FIELD(CBasePlayer, m_iWeaponVolume, FIELD_INTEGER),
+	DEFINE_FIELD(CBasePlayer, m_iExtraSoundTypes, FIELD_INTEGER),
+	DEFINE_FIELD(CBasePlayer, m_iWeaponFlash, FIELD_INTEGER),
+	DEFINE_FIELD(CBasePlayer, m_fLongJump, FIELD_BOOLEAN),
+	DEFINE_FIELD(CBasePlayer, m_fInitHUD, FIELD_BOOLEAN),
+	DEFINE_FIELD(CBasePlayer, m_tbdPrev, FIELD_TIME),
+
+	DEFINE_FIELD(CBasePlayer, m_pTank, FIELD_EHANDLE),
+	DEFINE_FIELD(CBasePlayer, m_iHideHUD, FIELD_INTEGER),
+	DEFINE_FIELD(CBasePlayer, m_iFOV, FIELD_INTEGER),
+
+	DEFINE_FIELD(CBasePlayer, m_flNextAttack, FIELD_FLOAT),
 	
-	DEFINE_ARRAY( CBasePlayer, m_rgAmmo, FIELD_INTEGER, MAX_AMMO_SLOTS ),
-	DEFINE_FIELD( CBasePlayer, m_idrowndmg, FIELD_INTEGER ),
-	DEFINE_FIELD( CBasePlayer, m_idrownrestored, FIELD_INTEGER ),
-	DEFINE_FIELD( CBasePlayer, m_tSneaking, FIELD_TIME ),
+	DEFINE_FIELD(CBasePlayer, m_flStartCharge, FIELD_TIME),
+#if defined( CLIENT_WEAPONS )
+	DEFINE_FIELD(CBasePlayer, m_flAmmoStartCharge, FIELD_FLOAT),
+#else
+	DEFINE_FIELD(CBasePlayer, m_flAmmoStartCharge, FIELD_TIME),
+#endif
+	DEFINE_FIELD(CBasePlayer, m_flPlayAftershock, FIELD_TIME),
+	DEFINE_FIELD(CBasePlayer, m_flNextAmmoBurn, FIELD_FLOAT),
 
-	DEFINE_FIELD( CBasePlayer, m_iTrain, FIELD_INTEGER ),
-	DEFINE_FIELD( CBasePlayer, m_bitsHUDDamage, FIELD_INTEGER ),
-	DEFINE_FIELD( CBasePlayer, m_flFallVelocity, FIELD_FLOAT ),
-	DEFINE_FIELD( CBasePlayer, m_iTargetVolume, FIELD_INTEGER ),
-	DEFINE_FIELD( CBasePlayer, m_iWeaponVolume, FIELD_INTEGER ),
-	DEFINE_FIELD( CBasePlayer, m_iExtraSoundTypes, FIELD_INTEGER ),
-	DEFINE_FIELD( CBasePlayer, m_iWeaponFlash, FIELD_INTEGER ),
-	DEFINE_FIELD( CBasePlayer, m_fLongJump, FIELD_BOOLEAN ),
-	DEFINE_FIELD( CBasePlayer, m_fInitHUD, FIELD_BOOLEAN ),
-	DEFINE_FIELD( CBasePlayer, m_tbdPrev, FIELD_TIME ),
-
-	DEFINE_FIELD( CBasePlayer, m_pTank, FIELD_EHANDLE ),
-	DEFINE_FIELD( CBasePlayer, m_iHideHUD, FIELD_INTEGER ),
-	DEFINE_FIELD( CBasePlayer, m_iFOV, FIELD_INTEGER ),
-	
 	//DEFINE_FIELD( CBasePlayer, m_fDeadTime, FIELD_FLOAT ), // only used in multiplayer games
 	//DEFINE_FIELD( CBasePlayer, m_fGameHUDInitialized, FIELD_INTEGER ), // only used in multiplayer games
 	//DEFINE_FIELD( CBasePlayer, m_flStopExtraSoundTime, FIELD_TIME ),
@@ -245,7 +258,7 @@ void LinkUserMessages( void )
 	gmsgTextMsg = REG_USER_MSG( "TextMsg", -1 );
 	gmsgWeaponList = REG_USER_MSG("WeaponList", -1);
 	gmsgResetHUD = REG_USER_MSG("ResetHUD", 1);		// called every respawn
-	gmsgInitHUD = REG_USER_MSG("InitHUD", 0 );		// called every time a new player joins the server
+	gmsgInitHUD = REG_USER_MSG("InitHUD", 1);		// called every time a new player joins the server
 	gmsgShowGameTitle = REG_USER_MSG("GameTitle", 1);
 	gmsgDeathMsg = REG_USER_MSG( "DeathMsg", -1 );
 //++ BulliT
@@ -510,6 +523,21 @@ void CBasePlayer :: TraceAttack( entvars_t *pevAttacker, float flDamage, Vector 
 
 int CBasePlayer :: TakeDamage( entvars_t *pevInflictor, entvars_t *pevAttacker, float flDamage, int bitsDamageType )
 {
+	if (m_fLoading)
+		return 0;
+
+	// Already dead
+	if (!IsAlive())
+		return 0;
+
+	CBaseEntity* pAttacker = CBaseEntity::Instance(pevAttacker);
+
+	if (!g_pGameRules->FPlayerCanTakeDamage(this, pAttacker))
+	{
+		// Refuse the damage
+		return 0;
+	}
+
 	// have suit diagnose the problem - ie: report damage type
 	int bitsDamage = bitsDamageType;
 	int ffound = TRUE;
@@ -530,19 +558,7 @@ int CBasePlayer :: TakeDamage( entvars_t *pevInflictor, entvars_t *pevAttacker, 
 		flBonus *= 2;
 	}
 
-	// Already dead
-	if ( !IsAlive() )
-		return 0;
 	// go take the damage first
-
-	
-	CBaseEntity *pAttacker = CBaseEntity::Instance(pevAttacker);
-
-	if ( !g_pGameRules->FPlayerCanTakeDamage( this, pAttacker ) )
-	{
-		// Refuse the damage
-		return 0;
-	}
 
 	// keep track of amount of damage last sustained
 	m_lastDamageAmount = flDamage;
@@ -1366,7 +1382,6 @@ void CBasePlayer::PlayerDeathThink(void)
 		PackDeadPlayerItems();
 	}
 
-
 	if (pev->modelindex && (!m_fSequenceFinished) && (pev->deadflag == DEAD_DYING))
 	{
 		StudioFrameAdvance( );
@@ -1504,7 +1519,8 @@ void CBasePlayer::StartDeathCam( void )
 	pev->movetype = MOVETYPE_NONE;
 	pev->modelindex = 0;
 }
-
+/*
+// Commented out as this is from a newer HLSDK and it doesn't work properly in AG
 void CBasePlayer::StartObserver( Vector vecPosition, Vector vecViewAngle )
 {
 	// clear any clientside entities attached to this player
@@ -1574,6 +1590,7 @@ void CBasePlayer::StartObserver( Vector vecPosition, Vector vecViewAngle )
 	m_flNextObserverInput = 0;
 	Observer_SetMode( m_iObserverLastMode );
 }
+*/
 
 // 
 // PlayerUse - handles USE keypress
@@ -1582,8 +1599,8 @@ void CBasePlayer::StartObserver( Vector vecPosition, Vector vecViewAngle )
 
 void CBasePlayer::PlayerUse ( void )
 {
-	if ( IsObserver() )
-		return;
+	//if ( IsObserver() )
+	//	return;
 
 	// Was use pressed or released?
 	if ( ! ((pev->button | m_afButtonPressed | m_afButtonReleased) & IN_USE) )
@@ -1942,6 +1959,8 @@ void CBasePlayer::UpdateStatusBar()
 void CBasePlayer::PreThink(void)
 {
 	int buttonsChanged = (m_afButtonLast ^ pev->button);	// These buttons have changed this frame
+
+	m_afButtonOriginal = pev->button;
 	
 	// Debounced button codes for pressed/released
 	// UNDONE: Do we need auto-repeat?
@@ -2016,7 +2035,8 @@ void CBasePlayer::PreThink(void)
 	CheckTimeBasedDamage();
 
 	CheckSuitUpdate();
-
+	/*
+	// Commented out as this is from a newer HLSDK and it doesn't work properly in AG
 	// Observer Button Handling
 	if ( IsObserver() )
 	{
@@ -2026,7 +2046,7 @@ void CBasePlayer::PreThink(void)
 		pev->impulse = 0;
 		return;
 	}
-
+	*/
 	if (pev->deadflag >= DEAD_DYING)
 	{
 		PlayerDeathThink();
@@ -2710,6 +2730,42 @@ void CBasePlayer::PostThink()
 	if (!IsAlive())
 		goto pt_end;
 
+	if (m_fLoading)
+	{
+		//	We're in a frame that's frozen in time during a map load or save restore; that is, the gpGlobals->time is
+		//	not advancing yet, but frames are somehow still being processed, and we don't receive the buttons that
+		//	the player is pressing during the load, causing things like gauss secondary being shot during these frozen frames.
+
+		//	So we check if the player had some button pressed right before loading, and if so, we try and keep those pressed
+		//	until it finishes loading, that is, when the receive some new input (from player's pev->buttons). There's an
+		//	unhandled edge case that's not too bad: when the player was pressing buttons before the load, but during the load
+		//	decides to stop pressing buttons and after loading still not pressing anything. In that case we're keeping their
+		//	previous buttons pressed even if they don't want to, but it's easily solvable by pressing some button to stop this
+		//	behaviour.
+
+		if (m_fLoading == 1)
+		{
+			m_fLoading = 2;
+			sploading.value = 2;
+			// We skip the first frozen frame because on saveloads (not passing through changelevel triggers) the engine sends
+			// buttons info somehow, but it's just whatever you had pressed previously I believe
+			return;
+		}
+
+		if (!m_afButtonOriginal)
+		{
+			if (m_afButtonOnLoad)
+			{
+				pev->button = m_afButtonOnLoad;
+			}
+		}
+		else if (m_afButtonOriginal != m_afButtonOnLoad)
+		{
+			m_fLoading = 0;
+			sploading.value = 0;
+		}
+	}
+
 	// Handle Tank controlling
 	if ( m_pTank != NULL )
 	{ // if they've moved too far from the gun,  or selected a weapon, unuse the gun
@@ -2722,6 +2778,16 @@ void CBasePlayer::PostThink()
 			m_pTank->Use( this, this, USE_OFF, 0 );
 			m_pTank = NULL;
 		}
+	}
+
+	if (gpGlobals->time < m_flInputFixReady && singleplayer.value > 0.0f && m_fLoading == 0.0f)
+	{
+		// HACK: Some players have an invisible menu popping up and preventing them from
+		// moving the mouse when they spawn in c1a0 for instance, so we fix it with this
+		// The fix for when m_fLoading > 0 follows other criteria and won't work here, so we're fixing that
+		// in another place (UpdateClientData()), which is basically in PreThink() instead of PostThink()
+		//ALERT(at_console, "[%.3f -> %.3f] Triggering -showscores\n", gpGlobals->time, m_flInputFixReady);
+		CLIENT_COMMAND(edict(), "-showscores\n");
 	}
 
 // do weapon stuff
@@ -2966,6 +3032,8 @@ edict_t *EntSelectSpawnPoint( CBaseEntity *pPlayer )
 			pSpot = UTIL_FindEntityByClassname( pSpot, "info_player_deathmatch" );
 		if ( FNullEnt( pSpot ) )  // skip over the null point
 			pSpot = UTIL_FindEntityByClassname( pSpot, "info_player_deathmatch" );
+		if ( FNullEnt(pSpot) && singleplayer.value > 0.0f)
+			pSpot = UTIL_FindEntityByClassname( pSpot, "info_player_start" );
 
 		CBaseEntity *pFirstSpot = pSpot;
 
@@ -3145,6 +3213,11 @@ void CBasePlayer::Spawn( void )
     Spectate_UpdatePosition();
   }
 //-- Martin Webrant
+
+  if (singleplayer.value > 0.0f)
+  {
+	  m_flInputFixReady = gpGlobals->time + (gpGlobals->frametime * INPUT_FIX_FRAMES);
+  }
 }
 
 
@@ -3197,6 +3270,13 @@ int CBasePlayer::Save( CSave &save )
 	if ( !CBaseMonster::Save(save) )
 		return 0;
 
+	m_afButtonOnLoad = m_afButtonOriginal;
+
+	if (spgausscharging.value == 1.0f)
+	{
+		spgausscharging.value = 2.0f;
+	}
+
 	return save.WriteFields( "PLAYER", this, m_playerSaveData, ARRAYSIZE(m_playerSaveData) );
 }
 
@@ -3214,6 +3294,9 @@ int CBasePlayer::Restore( CRestore &restore )
 {
 	if ( !CBaseMonster::Restore(restore) )
 		return 0;
+
+	sploading.value	= 1;
+	m_fLoading		= 1;
 
 	int status = restore.ReadFields( "PLAYER", this, m_playerSaveData, ARRAYSIZE(m_playerSaveData) );
 
@@ -3628,7 +3711,6 @@ void CBasePlayer :: ForceClientDllUpdate( void )
   m_bInitLocation = true;
   m_iFlagStatus1Last = -1;
   m_iFlagStatus2Last = -1;
-  
 
 #ifndef AG_NO_CLIENT_DLL
   MESSAGE_BEGIN( MSG_ONE, gmsgGametype, NULL, edict() );
@@ -3788,9 +3870,9 @@ void CBasePlayer::ImpulseCommands( )
 //=========================================================
 void CBasePlayer::CheatImpulseCommands( int iImpulse )
 {
-  //++ BulliT
-  return;
-  /*
+	if (!AgIsLocalServer() && singleplayer.value == 0.0f)
+		return;
+
 #if !defined( HLDEMO_BUILD )
 	if ( g_flWeaponCheat == 0.0 )
 	{
@@ -3964,8 +4046,6 @@ void CBasePlayer::CheatImpulseCommands( int iImpulse )
 		break;
 	}
 #endif	// HLDEMO_BUILD
-	*/
-  //-- Martin Webrant
 }
 
 //
@@ -4247,6 +4327,7 @@ void CBasePlayer :: UpdateClientData( void )
 		if ( !m_fGameHUDInitialized )
 		{
 			MESSAGE_BEGIN( MSG_ONE, gmsgInitHUD, NULL, pev );
+				WRITE_BYTE( 1 ); // slopebug = ON
 			MESSAGE_END();
 
       //++ BulliT
@@ -4270,7 +4351,7 @@ void CBasePlayer :: UpdateClientData( void )
 			g_pGameRules->InitHUD( this );
 			m_fGameHUDInitialized = TRUE;
 			
-			m_iObserverLastMode = OBS_ROAMING;
+			//m_iObserverLastMode = OBS_ROAMING;
 			
 			if ( g_pGameRules->IsMultiplayer() )
 			{
@@ -4655,6 +4736,16 @@ void CBasePlayer :: UpdateClientData( void )
 	}
 #endif
 //-- Martin Webrant
+
+	if (singleplayer.value >= 0.0f && m_fLoading == 2) {
+		// FIXME: HACK to avoid a bug on saveloads, where mouse input does nothing ingame,
+		// apparently because an invisible menu pops up. Only happens to a few speedrunners...
+		// Credits to h0boken for figuring out that it was the spec menu disabling the inputs
+		// Not triggering "spec_menu 0" anymore because it leaves some spam in the console
+		// only during startdemos apparently, so now using -showscores that fixes it too (thanks h0boken)
+		//ALERT(at_console, "[%.3f] Triggering -showscores\n", gpGlobals->time);
+		CLIENT_COMMAND(edict(), "-showscores\n");
+	}
 }
 
 
@@ -4987,7 +5078,7 @@ void CBasePlayer::DropPlayerItem ( char *pszItemName )
   if (FStrEq(pszItemName,"flag") && CTF == AgGametype())
     g_pGameRules->m_CTF.PlayerDropFlag(this,true);
 //-- Martin Webrant
-	if ( !g_pGameRules->IsMultiplayer() || (weaponstay.value > 0) )
+	if ( weaponstay.value > 0 )
 	{
 		// no dropping in single player.
 		return;

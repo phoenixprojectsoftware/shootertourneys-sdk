@@ -2623,6 +2623,10 @@ void CBaseMonster :: HandleAnimEvent( MonsterEvent_t *pEvent )
 		if ( m_MonsterState == MONSTERSTATE_SCRIPT )
 		{
 			pev->deadflag = DEAD_DYING;
+
+			if (!FBitSet(pev->spawnflags, SF_MONSTER_SOLID_CORPSE)) {
+				pev->solid = SOLID_NOT;
+			}
 			// Kill me now! (and fade out when CineCleanup() is called)
 #if _DEBUG
 			ALERT( at_aiconsole, "Death event: %s\n", STRING(pev->classname) );

@@ -375,14 +375,11 @@ void CSqueakGrenade::SuperBounceTouch( CBaseEntity *pOther )
 	m_flNextHit = gpGlobals->time + 0.1;
 	m_flNextHunt = gpGlobals->time;
 
-	if ( g_pGameRules->IsMultiplayer() )
+	// we limit how often snarks can make their bounce sounds to prevent overflows.
+	if ( gpGlobals->time < m_flNextBounceSoundTime )
 	{
-		// in multiplayer, we limit how often snarks can make their bounce sounds to prevent overflows.
-		if ( gpGlobals->time < m_flNextBounceSoundTime )
-		{
-			// too soon!
-			return;
-		}
+		// too soon!
+		return;
 	}
 
 	if (!(pev->flags & FL_ONGROUND))
@@ -414,6 +411,16 @@ LINK_ENTITY_TO_CLASS( weapon_snark, CSqueak );
 
 void CSqueak::Spawn( )
 {
+//++ BulliT
+#ifndef CLIENT_DLL
+  if (SGBOW == AgGametype())
+  {
+    //Spawn crossbow instead.
+	  CBaseEntity *pNewWeapon = CBaseEntity::Create( "weapon_crossbow", g_pGameRules->VecWeaponRespawnSpot( this ), pev->angles, pev->owner );
+    return;
+  }
+#endif
+//-- Martin Webrant
 	Precache( );
 	m_iId = WEAPON_SNARK;
 	SET_MODEL(ENT(pev), "models/w_sqknest.mdl");

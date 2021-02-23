@@ -27,7 +27,7 @@
 #include	"animation.h"
 #include	"soundent.h"
 
-
+#define		SCIENTIST_EXTRA_HEALTH	50.0
 #define		NUM_SCIENTIST_HEADS		4 // four heads available for scientist model
 enum { HEAD_GLASSES = 0, HEAD_EINSTEIN = 1, HEAD_LUTHER = 2, HEAD_SLICK = 3 };
 
@@ -139,11 +139,11 @@ Schedule_t	slFollow[] =
 	{
 		tlFollow,
 		ARRAYSIZE ( tlFollow ),
-		bits_COND_NEW_ENEMY |
+//		bits_COND_NEW_ENEMY |
 		bits_COND_LIGHT_DAMAGE |
 		bits_COND_HEAVY_DAMAGE |
 		bits_COND_HEAR_SOUND,
-		bits_SOUND_COMBAT |
+//		bits_SOUND_COMBAT |
 		bits_SOUND_DANGER,
 		"Follow"
 	},
@@ -161,9 +161,9 @@ Schedule_t	slFollowScared[] =
 	{
 		tlFollowScared,
 		ARRAYSIZE ( tlFollowScared ),
-		bits_COND_NEW_ENEMY |
+//		bits_COND_NEW_ENEMY |
 		bits_COND_HEAR_SOUND |
-		bits_COND_LIGHT_DAMAGE |
+//		bits_COND_LIGHT_DAMAGE |
 		bits_COND_HEAVY_DAMAGE,
 		bits_SOUND_DANGER,
 		"FollowScared"
@@ -208,7 +208,7 @@ Schedule_t	slStopFollowing[] =
 
 Task_t	tlHeal[] =
 {
-	{ TASK_MOVE_TO_TARGET_RANGE,(float)50		},	// Move within 60 of target ent (client)
+	{ TASK_MOVE_TO_TARGET_RANGE,(float)60		},	// Move within 60 of target ent (client)
 	{ TASK_SET_FAIL_SCHEDULE,	(float)SCHED_TARGET_CHASE },	// If you fail, catch up with that guy! (change this to put syringe away and then chase)
 	{ TASK_FACE_IDEAL,			(float)0		},
 	{ TASK_SAY_HEAL,			(float)0		},
@@ -664,7 +664,7 @@ void CScientist :: Spawn( void )
 	pev->solid			= SOLID_SLIDEBOX;
 	pev->movetype		= MOVETYPE_STEP;
 	m_bloodColor		= BLOOD_COLOR_RED;
-	pev->health			= gSkillData.scientistHealth;
+	pev->health			= gSkillData.scientistHealth + SCIENTIST_EXTRA_HEALTH; // TODO: refactor
 	pev->view_ofs		= Vector ( 0, 0, 50 );// position of the eyes relative to monster's origin.
 	m_flFieldOfView		= VIEW_FIELD_WIDE; // NOTE: we need a wide field of view so scientists will notice player and say hello
 	m_MonsterState		= MONSTERSTATE_NONE;
@@ -761,7 +761,7 @@ int CScientist :: TakeDamage( entvars_t *pevInflictor, entvars_t *pevAttacker, f
 	if ( pevInflictor && pevInflictor->flags & FL_CLIENT )
 	{
 		Remember( bits_MEMORY_PROVOKED );
-		StopFollowing( TRUE );
+		//StopFollowing( TRUE );
 	}
 
 	// make sure friends talk about it if player hurts scientist...
@@ -907,7 +907,7 @@ Schedule_t *CScientist :: GetSchedule ( void )
 	case MONSTERSTATE_IDLE:
 		if ( pEnemy )
 		{
-			if ( HasConditions( bits_COND_SEE_ENEMY ) )
+			if ( HasConditions(bits_COND_SEE_ENEMY) )
 				m_fearTime = gpGlobals->time;
 			else if ( DisregardEnemy( pEnemy ) )		// After 15 seconds of being hidden, return to alert
 			{
@@ -962,7 +962,7 @@ Schedule_t *CScientist :: GetSchedule ( void )
 			if ( relationship != R_DL && relationship != R_HT )
 			{
 				// If I'm already close enough to my target
-				if ( TargetDistance() <= 128 )
+				if ( TargetDistance() <= 160 )
 				{
 					if ( CanHeal() )	// Heal opportunistically
 						return slHeal;
@@ -1018,7 +1018,7 @@ MONSTERSTATE CScientist :: GetIdealState ( void )
 					m_IdealMonsterState = MONSTERSTATE_ALERT;
 					return m_IdealMonsterState;
 				}
-				StopFollowing( TRUE );
+				//StopFollowing( TRUE );
 			}
 		}
 		else if ( HasConditions( bits_COND_LIGHT_DAMAGE | bits_COND_HEAVY_DAMAGE ) )

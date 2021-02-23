@@ -386,10 +386,7 @@ void W_Precache(void)
 
 
 #if !defined( OEM_BUILD ) && !defined( HLDEMO_BUILD )
-	if ( g_pGameRules->IsDeathmatch() )
-	{
-		UTIL_PrecacheOther( "weaponbox" );// container for dropped deathmatch weapons
-	}
+	UTIL_PrecacheOther( "weaponbox" );// container for dropped deathmatch weapons
 #endif
 
 	g_sModelIndexFireball = PRECACHE_MODEL ("sprites/zerogxplode.spr");// fireball
@@ -631,6 +628,14 @@ void CBasePlayerItem::DefaultTouch( CBaseEntity *pOther )
 	}
 
 	SUB_UseTargets( pOther, USE_TOGGLE, 0 ); // UNDONE: when should this happen?
+
+	// Fix by YaLTeR (https://github.com/ValveSoftware/halflife/pull/1599):
+	// If the item is falling and its Think remains FallItem after the player picks it up,
+	// then after the item touches the ground its Touch will be set back to DefaultTouch,
+	// so the player will pick it up again, this time Kill-ing the item (since we already have it in the inventory),
+	// which will make the pointer bad and crash the game.
+	if (m_pfnThink == &CBasePlayerItem::FallThink)
+		SetThink(NULL);
 }
 
 BOOL CanAttack( float attack_time, float curtime, BOOL isPredicted )

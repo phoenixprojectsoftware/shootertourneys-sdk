@@ -1,8 +1,44 @@
-# SHOOTER TOURNEYS
-This repository contains the game DLL for [Shooter Tourneys.](https://www.moddb.com/mods/shooter-tourneys)
-Please note that this is the **GAME DLL** (creative.dll) which contains the weapons and gamemode code and not the **CLIENT DLL**. The **CLIENT DLL** is a modified version of grAyG and can be found on [here.](https://github.com/thephoenixprojectsoftware/grayg)
+# Adrenaline Gamer
+This is the source code and distribution files for Adrenaline Gamer Mod for Half-Life, developed by Martin Webrant aka BulliT between 2000 and 2003. This fork is focused on the serverside part. For the clientside part, it's recommended to use [OpenAG](https://openag.pro), which has the source code [here](https://github.com/YaLTeR/OpenAG).
+AG 6.7 is not released yet, but you can download it in its current state (for testing) [here](https://drive.google.com/open?id=1QuSQ2GV8hfti3ZVOoUPkjNTzulqLRRc0).
 
-# Half Life 1 SDK LICENSE
+## Original Team
+
+    Members
+        Team leader, Programmer and Website: Martin "BulliT" Webrant
+        IRC bot and in game logo: Harry "Saturn48" Bardak
+        Half-Life interfaces: Rik "Mr. T-rex" Schennink
+        Location files: Andrea "Golem" Kaiser
+        Graphics: Raziel "Raz" Meijroos
+        Updated log system and DOM mode: Gary "Hicks" Preston
+        Red/Blue models: Based on Halox by team halo
+        Some skinning by: Aljosa "AweX" Lovercic
+        CTF code is based on work done by: When It's Done Team
+        CTF sound: Ryan "Don" Robinson and Marius "DJ Gizmo" Ruud
+        Crosshairs: Daniel "Tolon" Doyle
+        Color for the default player model: Sander "Spr" Ravenhorst
+        IRC: The base for the built in IRC code was made by: Adi Degani
+        Installer made with: Nullsoft "SuperPiMP" Install System
+
+    Mappers
+        Steve "Scary-one" Lyne
+        Duncan "Reno" Blair
+        Michael "Wolf" Schulz
+        Rik "Mr. T-rex" Schennink
+        Martin "Violation" Buff
+        Ken "No remorse" Banks
+        Richard "CHiNX" Lloyd
+        Duncan "Finger" Moore
+        Hurlin "SmelC" Clément
+        Andrew "KungFuSquirrel" Weldon
+        "Cash Car Star"
+        tommyd
+
+
+
+
+Half Life 1 SDK LICENSE
+======================
 
 Half Life 1 SDK Copyright© Valve Corp.  
 
@@ -22,7 +58,32 @@ LIMITATION OF LIABILITY.  IN NO EVENT SHALL VALVE OR ITS SUPPLIERS BE LIABLE FOR
 If you would like to use the SDK for a commercial purpose, please contact Valve at sourceengine@valvesoftware.com.
 
 
-# Conduct
+Half-Life 1
+======================
+
+This is the README for the Half-Life 1 engine and its associated games.
+
+Please use this repository to report bugs and feature requests for Half-Life 1 related products.
+
+Reporting Issues
+----------------
+
+If you encounter an issue while using Half-Life 1 games, first search the [issue list](https://github.com/ValveSoftware/halflife/issues) to see if it has already been reported. Include closed issues in your search.
+
+If it has not been reported, create a new issue with at least the following information:
+
+- a short, descriptive title;
+- a detailed description of the issue, including any output from the command line;
+- steps for reproducing the issue;
+- your system information.\*; and
+- the `version` output from the in‐game console.
+
+Please place logs either in a code block (press `M` in your browser for a GFM cheat sheet) or a [gist](https://gist.github.com).
+
+\* The preferred and easiest way to get this information is from Steam's Hardware Information viewer from the menu (`Help -> System Information`). Once your information appears: right-click within the dialog, choose `Select All`, right-click again, and then choose `Copy`. Paste this information into your report, preferably in a code block.
+
+Conduct
+-------
 
 
 There are basic rules of conduct that should be followed at all times by everyone participating in the discussions.  While this is generally a relaxed environment, please remember the following:

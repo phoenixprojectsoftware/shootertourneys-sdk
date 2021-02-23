@@ -22,15 +22,21 @@
 #include	"player.h"
 #include	"weapons.h"
 #include	"gamerules.h"
+#include	"singleplay_gamerules.h"
 #include	"teamplay_gamerules.h"
 #include	"skill.h"
 #include	"game.h"
 
 extern edict_t *EntSelectSpawnPoint( CBaseEntity *pPlayer );
 
+#ifdef _WIN32
 //++ BulliT
 extern "C" _declspec(dllexport) DLL_GLOBAL AgGameRules* g_pGameRules = NULL;
 //-- Martin Webrant
+#else
+extern AgGameRules* g_pGameRules = NULL;
+#endif
+
 extern DLL_GLOBAL BOOL	g_fGameOver;
 extern int gmsgDeathMsg;	// client dll messages
 extern int gmsgMOTD;
@@ -354,16 +360,13 @@ AgGameRules* InstallGameRules(void)
 	SERVER_COMMAND(UTIL_VarArgs("exec %s.cfg\n", STRING(gpGlobals->mapname)));
 	SERVER_EXECUTE();
 
-	/*
-	if ( !gpGlobals->deathmatch )
+	if ( singleplayer.value > 0.0f )
 	{
 		// generic half-life
 		g_teamplay = 0;
 		return new CHalfLifeRules;
 	}
 	else
-	*/
-	//-- Martin Webrant
 	{
 		if ( teamplay.value > 0 )
 		{

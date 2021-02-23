@@ -291,23 +291,28 @@ BOOL CSatchel::CanDeploy( void )
 
 BOOL CSatchel::Deploy( )
 {
-
-	m_pPlayer->m_flNextAttack = UTIL_WeaponTimeBase() + 1.0;
 	m_flTimeWeaponIdle = UTIL_WeaponTimeBase() + UTIL_SharedRandomFloat( m_pPlayer->random_seed, 10, 15 );
 
-	if ( m_chargeReady )
-		return DefaultDeploy( "models/v_satchel_radio.mdl", "models/p_satchel_radio.mdl", SATCHEL_RADIO_DRAW, "hive" );
-	else
-		return DefaultDeploy( "models/v_satchel.mdl", "models/p_satchel.mdl", SATCHEL_DRAW, "trip" );
+	BOOL result = FALSE;
 
+	if ( m_chargeReady )
+		result = DefaultDeploy( "models/v_satchel_radio.mdl", "models/p_satchel_radio.mdl", SATCHEL_RADIO_DRAW, "hive" );
+	else
+		result = DefaultDeploy( "models/v_satchel.mdl", "models/p_satchel.mdl", SATCHEL_DRAW, "trip" );
+
+	if (CVAR_GET_FLOAT("sv_singleplayer") > 0.0f)
+		m_pPlayer->m_flNextAttack = UTIL_WeaponTimeBase() + 0.3;
 	
-	return TRUE;
+	return result;
 }
 
 
 void CSatchel::Holster( int skiplocal /* = 0 */ )
 {
-	m_pPlayer->m_flNextAttack = UTIL_WeaponTimeBase() + 0.5;
+	if (CVAR_GET_FLOAT("sv_singleplayer") > 0.0f)
+		m_pPlayer->m_flNextAttack = UTIL_WeaponTimeBase() + 0.2;
+	else
+		m_pPlayer->m_flNextAttack = UTIL_WeaponTimeBase() + 0.5;
 	
 	if ( m_chargeReady )
 	{

@@ -21,6 +21,11 @@
 #include "nodes.h"
 #include "player.h"
 #include "gamerules.h"
+//++ BulliT
+#ifdef AGSTATS
+#include "agstats.h"
+#endif
+//-- Martin Webrant
 
 
 #define	CROWBAR_BODYHIT_VOLUME 128
@@ -88,12 +93,15 @@ int CCrowbar::GetItemInfo(ItemInfo *p)
 
 BOOL CCrowbar::Deploy( )
 {
-	return DefaultDeploy( "models/v_crowbar.mdl", "models/p_crowbar.mdl", CROWBAR_DRAW, "crowbar" );
+	BOOL result = DefaultDeploy( "models/v_crowbar.mdl", "models/p_crowbar.mdl", CROWBAR_DRAW, "crowbar" );
+	m_pPlayer->m_flNextAttack = UTIL_WeaponTimeBase() + 0.1;
+
+	return result;
 }
 
 void CCrowbar::Holster( int skiplocal /* = 0 */ )
 {
-	m_pPlayer->m_flNextAttack = UTIL_WeaponTimeBase() + 0.5;
+	m_pPlayer->m_flNextAttack = UTIL_WeaponTimeBase() + 0.4;
 	SendWeaponAnim( CROWBAR_HOLSTER );
 }
 
@@ -167,6 +175,12 @@ void CCrowbar::SwingAgain( void )
 
 int CCrowbar::Swing( int fFirst )
 {
+//++ BulliT
+#ifdef AGSTATS
+	Stats.FireShot(m_pPlayer,STRING(pev->classname));
+#endif
+//-- Martin Webrant
+
 	int fDidHit = FALSE;
 
 	TraceResult tr;
@@ -190,6 +204,17 @@ int CCrowbar::Swing( int fFirst )
 				FindHullIntersection( vecSrc, tr, VEC_DUCK_HULL_MIN, VEC_DUCK_HULL_MAX, m_pPlayer->edict() );
 			vecEnd = tr.vecEndPos;	// This is the point on the actual surface (the hull could have hit space)
 		}
+		else if (CVAR_GET_FLOAT("sv_singleplayer") > 0.0f)
+		{
+			// Try with a larger hull
+			UTIL_TraceHull(vecSrc, vecEnd, dont_ignore_monsters, large_hull, ENT(m_pPlayer->pev), &tr);
+			if (tr.flFraction < 1.0)
+			{
+				CBaseEntity* pHit = CBaseEntity::Instance(tr.pHit);
+				if (!pHit || pHit->IsBSPModel())
+					FindHullIntersection(vecSrc, tr, VEC_LARGE_HULL_MIN, VEC_LARGE_HULL_MAX, m_pPlayer->edict());
+			}
+		}
 	}
 #endif
 
@@ -203,7 +228,10 @@ int CCrowbar::Swing( int fFirst )
 		if (fFirst)
 		{
 			// miss
-			m_flNextPrimaryAttack = GetNextAttackDelay(0.5);
+			if (CVAR_GET_FLOAT("sv_singleplayer") > 0.0f)
+				m_flNextPrimaryAttack = GetNextAttackDelay(0.3);
+			else
+				m_flNextPrimaryAttack = GetNextAttackDelay(0.5);
 			
 			// player "shoot" animation
 			m_pPlayer->SetAnimation( PLAYER_ATTACK1 );
@@ -232,16 +260,8 @@ int CCrowbar::Swing( int fFirst )
 
 		ClearMultiDamage( );
 
-		if ( (m_flNextPrimaryAttack + 1 < UTIL_WeaponTimeBase() ) || g_pGameRules->IsMultiplayer() )
-		{
-			// first swing does full damage
-			pEntity->TraceAttack(m_pPlayer->pev, gSkillData.plrDmgCrowbar, gpGlobals->v_forward, &tr, DMG_CLUB ); 
-		}
-		else
-		{
-			// subsequent swings do half
-			pEntity->TraceAttack(m_pPlayer->pev, gSkillData.plrDmgCrowbar / 2, gpGlobals->v_forward, &tr, DMG_CLUB ); 
-		}	
+		pEntity->TraceAttack(m_pPlayer->pev, gSkillData.plrDmgCrowbar, gpGlobals->v_forward, &tr, DMG_CLUB );
+
 		ApplyMultiDamage( m_pPlayer->pev, m_pPlayer->pev );
 
 		// play thwack, smack, or dong sound
@@ -264,7 +284,13 @@ int CCrowbar::Swing( int fFirst )
 				}
 				m_pPlayer->m_iWeaponVolume = CROWBAR_BODYHIT_VOLUME;
 				if ( !pEntity->IsAlive() )
-					  return TRUE;
+//++ BulliT
+					//return TRUE;
+				{
+					m_flNextPrimaryAttack = UTIL_WeaponTimeBase() + 0.25;
+					return TRUE;
+        			}
+//-- Martin Webrant
 				else
 					  flVol = 0.1;
 
@@ -313,6 +339,3 @@ int CCrowbar::Swing( int fFirst )
 	}
 	return fDidHit;
 }
-
-
-
