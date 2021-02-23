@@ -26,149 +26,149 @@
 void AgInitTimer();
 
 #ifdef AG_NO_CLIENT_DLL
-DLL_GLOBAL cvar_t	ag_version = { "sv_ag_version","6.8mini", FCVAR_SERVER };
+DLL_GLOBAL cvar_t	ag_version = { "sv_creative_version","7.0mini", FCVAR_SERVER };
 #else
-DLL_GLOBAL cvar_t	ag_version = { "sv_ag_version","6.8C", FCVAR_SERVER };
+DLL_GLOBAL cvar_t	ag_version = { "sv_creative_version","7.1", FCVAR_SERVER };
 #endif
 
-DLL_GLOBAL cvar_t	ag_gamemode = { "sv_ag_gamemode","ffa", FCVAR_SERVER }; //The current gamemode
-DLL_GLOBAL cvar_t	ag_allowed_gamemodes = { "sv_ag_allowed_gamemodes","" };
+DLL_GLOBAL cvar_t	ag_gamemode = { "sv_creative_gamemode","ffa", FCVAR_SERVER }; //The current gamemode
+DLL_GLOBAL cvar_t	ag_allowed_gamemodes = { "sv_creative_allowed_gamemodes","" };
 
-DLL_GLOBAL cvar_t	ag_pure = { "sv_ag_pure","0",FCVAR_SERVER };     //Default off.
+DLL_GLOBAL cvar_t	ag_pure = { "sv_creative_pure","0",FCVAR_SERVER };     //Default off.
 
-DLL_GLOBAL cvar_t	ag_match_running = { "sv_ag_match_running","0",FCVAR_SERVER | FCVAR_UNLOGGED };          //Default not match. Protects players from wondering into the server.
+DLL_GLOBAL cvar_t	ag_match_running = { "sv_creative_match_running","0",FCVAR_SERVER | FCVAR_UNLOGGED };          //Default not match. Protects players from wondering into the server.
 
-DLL_GLOBAL cvar_t	ag_oldphysics = { "sv_ag_oldphysics","1" };
+DLL_GLOBAL cvar_t	ag_oldphysics = { "sv_creative_oldphysics","1" };
 
-DLL_GLOBAL cvar_t	ag_allow_timeout = { "sv_ag_allow_timeout","1" };       //Allow timeout.
+DLL_GLOBAL cvar_t	ag_allow_timeout = { "sv_creative_allow_timeout","1" };       //Allow timeout.
 
-DLL_GLOBAL cvar_t	ag_allow_vote = { "sv_ag_allow_vote","1", FCVAR_SERVER | FCVAR_UNLOGGED };       //Voting is enabled by default.
-DLL_GLOBAL cvar_t	ag_vote_start = { "sv_ag_vote_start","1", FCVAR_SERVER | FCVAR_UNLOGGED };                    //Start voting enabled by default
-DLL_GLOBAL cvar_t	ag_vote_setting = { "sv_ag_vote_setting","1" };                  //Setting voting enabled by default
-DLL_GLOBAL cvar_t	ag_vote_gamemode = { "sv_ag_vote_gamemode","1", FCVAR_SERVER | FCVAR_UNLOGGED };                 //Gamemode voting is enabled by default.
-DLL_GLOBAL cvar_t	ag_vote_kick = { "sv_ag_vote_kick","0" };                     //Kick voting is disabled by default.
-DLL_GLOBAL cvar_t	ag_vote_allow = { "sv_ag_vote_allow","1" };                    //All voting is enabled by default.
-DLL_GLOBAL cvar_t	ag_vote_admin = { "sv_ag_vote_admin","0" };                    //Admin voting is disabled by default.
-DLL_GLOBAL cvar_t	ag_vote_map = { "sv_ag_vote_map","1", FCVAR_SERVER | FCVAR_UNLOGGED };                      //Map voting is enabled by default.
-DLL_GLOBAL cvar_t	ag_vote_failed_time = { "sv_ag_vote_failed_time","30" };
+DLL_GLOBAL cvar_t	ag_allow_vote = { "sv_creative_allow_vote","1", FCVAR_SERVER | FCVAR_UNLOGGED };       //Voting is enabled by default.
+DLL_GLOBAL cvar_t	ag_vote_start = { "sv_creative_vote_start","1", FCVAR_SERVER | FCVAR_UNLOGGED };                    //Start voting enabled by default
+DLL_GLOBAL cvar_t	ag_vote_setting = { "sv_creative_vote_setting","1" };                  //Setting voting enabled by default
+DLL_GLOBAL cvar_t	ag_vote_gamemode = { "sv_creative_vote_gamemode","1", FCVAR_SERVER | FCVAR_UNLOGGED };                 //Gamemode voting is enabled by default.
+DLL_GLOBAL cvar_t	ag_vote_kick = { "sv_creative_vote_kick","0" };                     //Kick voting is disabled by default.
+DLL_GLOBAL cvar_t	ag_vote_allow = { "sv_creative_vote_allow","1" };                    //All voting is enabled by default.
+DLL_GLOBAL cvar_t	ag_vote_admin = { "sv_creative_vote_admin","0" };                    //Admin voting is disabled by default.
+DLL_GLOBAL cvar_t	ag_vote_map = { "sv_creative_vote_map","1", FCVAR_SERVER | FCVAR_UNLOGGED };                      //Map voting is enabled by default.
+DLL_GLOBAL cvar_t	ag_vote_failed_time = { "sv_creative_vote_failed_time","30" };
 
-DLL_GLOBAL cvar_t	ag_start_minplayers = { "sv_ag_start_minplayers","2" };
+DLL_GLOBAL cvar_t	creative_start_minplayers = { "sv_creative_start_minplayers","2" };
 
-DLL_GLOBAL cvar_t	ag_vote_mp_timelimit_low = { "sv_ag_vote_mp_timelimit_low","10" };
-DLL_GLOBAL cvar_t	ag_vote_mp_timelimit_high = { "sv_ag_vote_mp_timelimit_high","40" };
-DLL_GLOBAL cvar_t	ag_vote_mp_fraglimit_low = { "sv_ag_vote_mp_fraglimit_low","0" };
-DLL_GLOBAL cvar_t	ag_vote_mp_fraglimit_high = { "sv_ag_vote_mp_fraglimit_high","100" };
+DLL_GLOBAL cvar_t	ag_vote_mp_timelimit_low = { "sv_creative_vote_mp_timelimit_low","10" };
+DLL_GLOBAL cvar_t	ag_vote_mp_timelimit_high = { "sv_creative_vote_mp_timelimit_high","40" };
+DLL_GLOBAL cvar_t	ag_vote_mp_fraglimit_low = { "sv_creative_vote_mp_fraglimit_low","0" };
+DLL_GLOBAL cvar_t	ag_vote_mp_fraglimit_high = { "sv_creative_vote_mp_fraglimit_high","100" };
 
-DLL_GLOBAL cvar_t	ag_floodmsgs = { "sv_ag_floodmsgs","4" };
-DLL_GLOBAL cvar_t	ag_floodpersecond = { "sv_ag_floodpersecond","4" };
-DLL_GLOBAL cvar_t	ag_floodwaitdelay = { "sv_ag_floodwaitdelay","10" };
+DLL_GLOBAL cvar_t	ag_floodmsgs = { "sv_creative_floodmsgs","4" };
+DLL_GLOBAL cvar_t	ag_floodpersecond = { "sv_creative_floodpersecond","4" };
+DLL_GLOBAL cvar_t	ag_floodwaitdelay = { "sv_creative_floodwaitdelay","10" };
 
-DLL_GLOBAL cvar_t	ag_player_id = { "sv_ag_player_id","5" };           //Default 5 seconds.
-DLL_GLOBAL cvar_t	ag_auto_admin = { "sv_ag_auto_admin","1" };          //Default 1 = Autoauthenticate admins based on won id.
+DLL_GLOBAL cvar_t	ag_player_id = { "sv_creative_player_id","5" };           //Default 5 seconds.
+DLL_GLOBAL cvar_t	ag_auto_admin = { "sv_creative_auto_admin","1" };          //Default 1 = Autoauthenticate admins based on won id.
 
-DLL_GLOBAL cvar_t	ag_lj_timer = { "sv_ag_lj_timer","0" };            //Default 0 = turned off.
+DLL_GLOBAL cvar_t	ag_lj_timer = { "sv_creative_lj_timer","0" };            //Default 0 = turned off.
 
-DLL_GLOBAL cvar_t	ag_wallgauss = { "sv_ag_wallgauss","1" };           //Default 1 = Lame wallgauss on.
-DLL_GLOBAL cvar_t	ag_headshot = { "sv_ag_headshot","3" };            //Default 3 = 3 times damage
-DLL_GLOBAL cvar_t	ag_blastradius = { "sv_ag_blastradius","1" };         //Default 1 = Standard radius
-
-
-DLL_GLOBAL cvar_t	ag_ban_crowbar = { "sv_ag_ban_crowbar","0" };
-DLL_GLOBAL cvar_t	ag_ban_glock = { "sv_ag_ban_glock","0" };
-DLL_GLOBAL cvar_t	ag_ban_357 = { "sv_ag_ban_357","0" };
-DLL_GLOBAL cvar_t	ag_ban_mp5 = { "sv_ag_ban_mp5","0" };
-DLL_GLOBAL cvar_t	ag_ban_shotgun = { "sv_ag_ban_shotgun", "0" };
-DLL_GLOBAL cvar_t	ag_ban_crossbow = { "sv_ag_ban_crossbow", "0" };
-DLL_GLOBAL cvar_t	ag_ban_rpg = { "sv_ag_ban_rpg","0" };
-DLL_GLOBAL cvar_t	ag_ban_gauss = { "sv_ag_ban_gauss","0" };
-DLL_GLOBAL cvar_t	ag_ban_egon = { "sv_ag_ban_egon","0" };
-DLL_GLOBAL cvar_t	ag_ban_hornet = { "sv_ag_ban_hornet","0" };
-
-DLL_GLOBAL cvar_t	ag_ban_hgrenade = { "sv_ag_ban_hgrenade","0" };
-DLL_GLOBAL cvar_t	ag_ban_satchel = { "sv_ag_ban_satchel","0" };
-DLL_GLOBAL cvar_t	ag_ban_tripmine = { "sv_ag_ban_tripmine","0" };
-DLL_GLOBAL cvar_t	ag_ban_snark = { "sv_ag_ban_snark","0" };
-DLL_GLOBAL cvar_t	ag_ban_longjump = { "sv_ag_ban_longjump","0" };
-DLL_GLOBAL cvar_t	ag_ban_m203 = { "sv_ag_ban_m203","0" };
-DLL_GLOBAL cvar_t	ag_ban_9mmar = { "sv_ag_ban_9mmar","0" };
-DLL_GLOBAL cvar_t	ag_ban_bockshot = { "sv_ag_ban_bockshot","0" };
-DLL_GLOBAL cvar_t	ag_ban_uranium = { "sv_ag_ban_uranium","0" };
-DLL_GLOBAL cvar_t	ag_ban_bolts = { "sv_ag_ban_bolts","0" };
-DLL_GLOBAL cvar_t	ag_ban_rockets = { "sv_ag_ban_rockets","0" };
-DLL_GLOBAL cvar_t	ag_ban_357ammo = { "sv_ag_ban_357ammo","0" };
-
-DLL_GLOBAL cvar_t	ag_ban_armour = { "sv_ag_ban_armour","0" };
-DLL_GLOBAL cvar_t	ag_ban_health = { "sv_ag_ban_health","0" };
-DLL_GLOBAL cvar_t	ag_ban_recharg = { "sv_ag_ban_recharg","0" };
-
-DLL_GLOBAL cvar_t	ag_start_crowbar = { "sv_ag_start_crowbar","1" };
-DLL_GLOBAL cvar_t	ag_start_glock = { "sv_ag_start_glock","1" };
-DLL_GLOBAL cvar_t	ag_start_357 = { "sv_ag_start_357","0" };
-DLL_GLOBAL cvar_t	ag_start_mp5 = { "sv_ag_start_mp5","0" };
-DLL_GLOBAL cvar_t	ag_start_shotgun = { "sv_ag_start_shotgun", "0" };
-DLL_GLOBAL cvar_t	ag_start_crossbow = { "sv_ag_start_crossbow", "0" };
-DLL_GLOBAL cvar_t	ag_start_rpg = { "sv_ag_start_rpg","0" };
-DLL_GLOBAL cvar_t	ag_start_gauss = { "sv_ag_start_gauss","0" };
-DLL_GLOBAL cvar_t	ag_start_egon = { "sv_ag_start_egon","0" };
-DLL_GLOBAL cvar_t	ag_start_hornet = { "sv_ag_start_hornet","0" };
-
-DLL_GLOBAL cvar_t	ag_start_hgrenade = { "sv_ag_start_hgrenade","0" };
-DLL_GLOBAL cvar_t	ag_start_satchel = { "sv_ag_start_satchel","0" };
-DLL_GLOBAL cvar_t	ag_start_tripmine = { "sv_ag_start_tripmine","0" };
-DLL_GLOBAL cvar_t	ag_start_snark = { "sv_ag_start_snark","0" };
-DLL_GLOBAL cvar_t	ag_start_longjump = { "sv_ag_start_longjump","0" };
-DLL_GLOBAL cvar_t	ag_start_m203 = { "sv_ag_start_m203","0" };
-DLL_GLOBAL cvar_t	ag_start_9mmar = { "sv_ag_start_9mmar","68" };
-DLL_GLOBAL cvar_t	ag_start_bockshot = { "sv_ag_start_bockshot","0" };
-DLL_GLOBAL cvar_t	ag_start_uranium = { "sv_ag_start_uranium","0" };
-DLL_GLOBAL cvar_t	ag_start_bolts = { "sv_ag_start_bolts","0" };
-DLL_GLOBAL cvar_t	ag_start_rockets = { "sv_ag_start_rockets","0" };
-DLL_GLOBAL cvar_t	ag_start_357ammo = { "sv_ag_start_357ammo","0" };
-DLL_GLOBAL cvar_t	ag_start_armour = { "sv_ag_start_armour","0" };
-DLL_GLOBAL cvar_t	ag_start_health = { "sv_ag_start_health","100" };
-
-DLL_GLOBAL cvar_t	ag_dmg_crowbar = { "sv_ag_dmg_crowbar","25" };
-DLL_GLOBAL cvar_t	ag_dmg_glock = { "sv_ag_dmg_glock","12" };
-DLL_GLOBAL cvar_t	ag_dmg_357 = { "sv_ag_dmg_357","40" };
-DLL_GLOBAL cvar_t	ag_dmg_mp5 = { "sv_ag_dmg_mp5","12" };
-DLL_GLOBAL cvar_t	ag_dmg_shotgun = { "sv_ag_dmg_shotgun", "20" };
-DLL_GLOBAL cvar_t	ag_dmg_crossbow = { "sv_ag_dmg_crossbow", "20" };
-DLL_GLOBAL cvar_t	ag_dmg_bolts = { "sv_ag_dmg_bolts","50" };
-DLL_GLOBAL cvar_t	ag_dmg_rpg = { "sv_ag_dmg_rpg","120" };
-DLL_GLOBAL cvar_t	ag_dmg_gauss = { "sv_ag_dmg_gauss","20" };
-DLL_GLOBAL cvar_t	ag_dmg_egon_wide = { "sv_ag_dmg_egon_wide","20" };
-DLL_GLOBAL cvar_t	ag_dmg_egon_narrow = { "sv_ag_dmg_egon_narrow","10" };
-DLL_GLOBAL cvar_t	ag_dmg_hornet = { "sv_ag_dmg_hornet","10" };
-DLL_GLOBAL cvar_t	ag_dmg_hgrenade = { "sv_ag_dmg_hgrenade","100" };
-DLL_GLOBAL cvar_t	ag_dmg_satchel = { "sv_ag_dmg_satchel","120" };
-DLL_GLOBAL cvar_t	ag_dmg_tripmine = { "sv_ag_dmg_tripmine","150" };
-DLL_GLOBAL cvar_t	ag_dmg_m203 = { "sv_ag_dmg_m203","100" };
+DLL_GLOBAL cvar_t	ag_wallgauss = { "sv_creative_wallgauss","1" };           //Default 1 = Lame wallgauss on.
+DLL_GLOBAL cvar_t	ag_headshot = { "sv_creative_headshot","3" };            //Default 3 = 3 times damage
+DLL_GLOBAL cvar_t	ag_blastradius = { "sv_creative_blastradius","1" };         //Default 1 = Standard radius
 
 
-DLL_GLOBAL cvar_t	ag_max_spectators = { "sv_ag_max_spectators","5" };
-DLL_GLOBAL cvar_t	ag_spec_enable_disable = { "sv_ag_spec_enable_disable","0" };
+DLL_GLOBAL cvar_t	ag_ban_crowbar = { "sv_creative_ban_crowbar","0" };
+DLL_GLOBAL cvar_t	ag_ban_glock = { "sv_creative_ban_glock","0" };
+DLL_GLOBAL cvar_t	ag_ban_357 = { "sv_creative_ban_357","0" };
+DLL_GLOBAL cvar_t	ag_ban_mp5 = { "sv_creative_ban_mp5","0" };
+DLL_GLOBAL cvar_t	ag_ban_shotgun = { "sv_creative_ban_shotgun", "0" };
+DLL_GLOBAL cvar_t	ag_ban_crossbow = { "sv_creative_ban_crossbow", "0" };
+DLL_GLOBAL cvar_t	ag_ban_rpg = { "sv_creative_ban_rpg","0" };
+DLL_GLOBAL cvar_t	ag_ban_gauss = { "sv_creative_ban_gauss","0" };
+DLL_GLOBAL cvar_t	ag_ban_egon = { "sv_creative_ban_egon","0" };
+DLL_GLOBAL cvar_t	ag_ban_hornet = { "sv_creative_ban_hornet","0" };
+
+DLL_GLOBAL cvar_t	ag_ban_hgrenade = { "sv_creative_ban_hgrenade","0" };
+DLL_GLOBAL cvar_t	ag_ban_satchel = { "sv_creative_ban_satchel","0" };
+DLL_GLOBAL cvar_t	ag_ban_tripmine = { "sv_creative_ban_tripmine","0" };
+DLL_GLOBAL cvar_t	ag_ban_snark = { "sv_creative_ban_snark","0" };
+DLL_GLOBAL cvar_t	ag_ban_longjump = { "sv_creative_ban_longjump","0" };
+DLL_GLOBAL cvar_t	ag_ban_m203 = { "sv_creative_ban_m203","0" };
+DLL_GLOBAL cvar_t	ag_ban_9mmar = { "sv_creative_ban_9mmar","0" };
+DLL_GLOBAL cvar_t	ag_ban_bockshot = { "sv_creative_ban_bockshot","0" };
+DLL_GLOBAL cvar_t	ag_ban_uranium = { "sv_creative_ban_uranium","0" };
+DLL_GLOBAL cvar_t	ag_ban_bolts = { "sv_creative_ban_bolts","0" };
+DLL_GLOBAL cvar_t	ag_ban_rockets = { "sv_creative_ban_rockets","0" };
+DLL_GLOBAL cvar_t	ag_ban_357ammo = { "sv_creative_ban_357ammo","0" };
+
+DLL_GLOBAL cvar_t	ag_ban_armour = { "sv_creative_ban_armour","0" };
+DLL_GLOBAL cvar_t	ag_ban_health = { "sv_creative_ban_health","0" };
+DLL_GLOBAL cvar_t	ag_ban_recharg = { "sv_creative_ban_recharg","0" };
+
+DLL_GLOBAL cvar_t	creative_start_crowbar = { "sv_creative_start_crowbar","1" };
+DLL_GLOBAL cvar_t	creative_start_glock = { "sv_creative_start_glock","1" };
+DLL_GLOBAL cvar_t	creative_start_357 = { "sv_creative_start_357","0" };
+DLL_GLOBAL cvar_t	creative_start_mp5 = { "sv_creative_start_mp5","0" };
+DLL_GLOBAL cvar_t	creative_start_shotgun = { "sv_creative_start_shotgun", "0" };
+DLL_GLOBAL cvar_t	creative_start_crossbow = { "sv_creative_start_crossbow", "0" };
+DLL_GLOBAL cvar_t	creative_start_rpg = { "sv_creative_start_rpg","0" };
+DLL_GLOBAL cvar_t	creative_start_gauss = { "sv_creative_start_gauss","0" };
+DLL_GLOBAL cvar_t	creative_start_egon = { "sv_creative_start_egon","0" };
+DLL_GLOBAL cvar_t	creative_start_hornet = { "sv_creative_start_hornet","0" };
+
+DLL_GLOBAL cvar_t	creative_start_hgrenade = { "sv_creative_start_hgrenade","0" };
+DLL_GLOBAL cvar_t	creative_start_satchel = { "sv_creative_start_satchel","0" };
+DLL_GLOBAL cvar_t	creative_start_tripmine = { "sv_creative_start_tripmine","0" };
+DLL_GLOBAL cvar_t	creative_start_snark = { "sv_creative_start_snark","0" };
+DLL_GLOBAL cvar_t	creative_start_longjump = { "sv_creative_start_longjump","0" };
+DLL_GLOBAL cvar_t	creative_start_m203 = { "sv_creative_start_m203","0" };
+DLL_GLOBAL cvar_t	creative_start_9mmar = { "sv_creative_start_9mmar","68" };
+DLL_GLOBAL cvar_t	creative_start_bockshot = { "sv_creative_start_bockshot","0" };
+DLL_GLOBAL cvar_t	creative_start_uranium = { "sv_creative_start_uranium","0" };
+DLL_GLOBAL cvar_t	creative_start_bolts = { "sv_creative_start_bolts","0" };
+DLL_GLOBAL cvar_t	creative_start_rockets = { "sv_creative_start_rockets","0" };
+DLL_GLOBAL cvar_t	creative_start_357ammo = { "sv_creative_start_357ammo","0" };
+DLL_GLOBAL cvar_t	creative_start_armour = { "sv_creative_start_armour","0" };
+DLL_GLOBAL cvar_t	creative_start_health = { "sv_creative_start_health","100" };
+
+DLL_GLOBAL cvar_t	ag_dmg_crowbar = { "sv_creative_dmg_crowbar","25" };
+DLL_GLOBAL cvar_t	ag_dmg_glock = { "sv_creative_dmg_glock","12" };
+DLL_GLOBAL cvar_t	ag_dmg_357 = { "sv_creative_dmg_357","40" };
+DLL_GLOBAL cvar_t	ag_dmg_mp5 = { "sv_creative_dmg_mp5","12" };
+DLL_GLOBAL cvar_t	ag_dmg_shotgun = { "sv_creative_dmg_shotgun", "20" };
+DLL_GLOBAL cvar_t	ag_dmg_crossbow = { "sv_creative_dmg_crossbow", "20" };
+DLL_GLOBAL cvar_t	ag_dmg_bolts = { "sv_creative_dmg_bolts","50" };
+DLL_GLOBAL cvar_t	ag_dmg_rpg = { "sv_creative_dmg_rpg","120" };
+DLL_GLOBAL cvar_t	ag_dmg_gauss = { "sv_creative_dmg_gauss","20" };
+DLL_GLOBAL cvar_t	ag_dmg_egon_wide = { "sv_creative_dmg_egon_wide","20" };
+DLL_GLOBAL cvar_t	ag_dmg_egon_narrow = { "sv_creative_dmg_egon_narrow","10" };
+DLL_GLOBAL cvar_t	ag_dmg_hornet = { "sv_creative_dmg_hornet","10" };
+DLL_GLOBAL cvar_t	ag_dmg_hgrenade = { "sv_creative_dmg_hgrenade","100" };
+DLL_GLOBAL cvar_t	ag_dmg_satchel = { "sv_creative_dmg_satchel","120" };
+DLL_GLOBAL cvar_t	ag_dmg_tripmine = { "sv_creative_dmg_tripmine","150" };
+DLL_GLOBAL cvar_t	ag_dmg_m203 = { "sv_creative_dmg_m203","100" };
+
+
+DLL_GLOBAL cvar_t	ag_max_spectators = { "sv_creative_max_spectators","5" };
+DLL_GLOBAL cvar_t	ag_spec_enable_disable = { "sv_creative_spec_enable_disable","0" };
 DLL_GLOBAL cvar_t	ag_spectalk = { "ag_spectalk","1" };
 
-DLL_GLOBAL cvar_t	ag_spawn_volume = { "sv_ag_spawn_volume","1" };
-DLL_GLOBAL cvar_t	ag_show_gibs = { "sv_ag_show_gibs","1" };
+DLL_GLOBAL cvar_t	ag_spawn_volume = { "sv_creative_spawn_volume","1" };
+DLL_GLOBAL cvar_t	ag_show_gibs = { "sv_creative_show_gibs","1" };
 
-DLL_GLOBAL cvar_t	ag_gametype = { "sv_ag_gametype","" };
+DLL_GLOBAL cvar_t	ag_gametype = { "sv_creative_gametype","" };
 
-DLL_GLOBAL cvar_t	ag_ctf_flag_resettime = { "sv_ag_ctf_flag_resettime","30" };  //the time that a dropped flag lays in the world before respawning
-DLL_GLOBAL cvar_t	ag_ctf_capture_limit = { "sv_ag_ctf_capturelimit","10", FCVAR_SERVER };  //the number of captures before map ends.
-DLL_GLOBAL cvar_t	ag_ctf_teamcapturepoints = { "sv_ag_ctf_teamcapturepoints","1" };  //the ammount of points his teammates get
-DLL_GLOBAL cvar_t	ag_ctf_capturepoints = { "sv_ag_ctf_capturepoints","4" };  //the amount of points the capturer gets
-DLL_GLOBAL cvar_t	ag_ctf_returnpoints = { "sv_ag_ctf_returnpoints","1" };  //the amount of points the returner gets.
-DLL_GLOBAL cvar_t	ag_ctf_carrierkillpoints = { "sv_ag_ctf_carrierkillpoints","1" };  //the amount of points the killer gets.
-DLL_GLOBAL cvar_t	ag_ctf_stealpoints = { "sv_ag_ctf_stealpoints","1" };  //the amount of points the stealer gets.
-DLL_GLOBAL cvar_t	ag_ctf_defendpoints = { "sv_ag_ctf_defendpoints","1" };  //the amount of points the defender gets.
-DLL_GLOBAL cvar_t	ag_ctf_roundbased = { "sv_ag_ctf_roundbased","0" };  //1 for roundbased CTF game.
+DLL_GLOBAL cvar_t	ag_ctf_flag_resettime = { "sv_creative_ctf_flag_resettime","30" };  //the time that a dropped flag lays in the world before respawning
+DLL_GLOBAL cvar_t	ag_ctf_capture_limit = { "sv_creative_ctf_capturelimit","10", FCVAR_SERVER };  //the number of captures before map ends.
+DLL_GLOBAL cvar_t	ag_ctf_teamcapturepoints = { "sv_creative_ctf_teamcapturepoints","1" };  //the ammount of points his teammates get
+DLL_GLOBAL cvar_t	ag_ctf_capturepoints = { "sv_creative_ctf_capturepoints","4" };  //the amount of points the capturer gets
+DLL_GLOBAL cvar_t	ag_ctf_returnpoints = { "sv_creative_ctf_returnpoints","1" };  //the amount of points the returner gets.
+DLL_GLOBAL cvar_t	ag_ctf_carrierkillpoints = { "sv_creative_ctf_carrierkillpoints","1" };  //the amount of points the killer gets.
+DLL_GLOBAL cvar_t	ag_ctf_stealpoints = { "sv_creative_ctf_stealpoints","1" };  //the amount of points the stealer gets.
+DLL_GLOBAL cvar_t	ag_ctf_defendpoints = { "sv_creative_ctf_defendpoints","1" };  //the amount of points the defender gets.
+DLL_GLOBAL cvar_t	ag_ctf_roundbased = { "sv_creative_ctf_roundbased","0" };  //1 for roundbased CTF game.
 
 //++ muphicks
-DLL_GLOBAL cvar_t	ag_dom_mincontroltime = { "sv_ag_dom_mincontroltime","5" }; // number of seconds team must control point to score
-DLL_GLOBAL cvar_t ag_dom_controlpoints = { "sv_ag_dom_controlpoints", "1" }; // number of points scored when under teams control
-DLL_GLOBAL cvar_t ag_dom_resetscorelimit = { "sv_ag_dom_resetscorelimit", "6" }; // max time under 1 teams control 5*6 = 30 seconds
-DLL_GLOBAL cvar_t ag_dom_scorelimit = { "sv_ag_dom_scorelimit", "200" }; // max points a team needs to get to win the game
+DLL_GLOBAL cvar_t	ag_dom_mincontroltime = { "sv_creative_dom_mincontroltime","5" }; // number of seconds team must control point to score
+DLL_GLOBAL cvar_t ag_dom_controlpoints = { "sv_creative_dom_controlpoints", "1" }; // number of points scored when under teams control
+DLL_GLOBAL cvar_t ag_dom_resetscorelimit = { "sv_creative_dom_resetscorelimit", "6" }; // max time under 1 teams control 5*6 = 30 seconds
+DLL_GLOBAL cvar_t ag_dom_scorelimit = { "sv_creative_dom_scorelimit", "200" }; // max points a team needs to get to win the game
 //-- muphicks
 
 DLL_GLOBAL cvar_t ag_gauss_fix = { "ag_gauss_fix","0" };            //Default 0 - no fix.
@@ -233,32 +233,32 @@ void AgInitGame()
     CVAR_REGISTER(&ag_ban_health);
     CVAR_REGISTER(&ag_ban_recharg);
 
-    CVAR_REGISTER(&ag_start_crowbar);
-    CVAR_REGISTER(&ag_start_glock);
-    CVAR_REGISTER(&ag_start_357);
-    CVAR_REGISTER(&ag_start_mp5);
-    CVAR_REGISTER(&ag_start_shotgun);
-    CVAR_REGISTER(&ag_start_crossbow);
-    CVAR_REGISTER(&ag_start_rpg);
-    CVAR_REGISTER(&ag_start_gauss);
-    CVAR_REGISTER(&ag_start_egon);
-    CVAR_REGISTER(&ag_start_hornet);
+    CVAR_REGISTER(&creative_start_crowbar);
+    CVAR_REGISTER(&creative_start_glock);
+    CVAR_REGISTER(&creative_start_357);
+    CVAR_REGISTER(&creative_start_mp5);
+    CVAR_REGISTER(&creative_start_shotgun);
+    CVAR_REGISTER(&creative_start_crossbow);
+    CVAR_REGISTER(&creative_start_rpg);
+    CVAR_REGISTER(&creative_start_gauss);
+    CVAR_REGISTER(&creative_start_egon);
+    CVAR_REGISTER(&creative_start_hornet);
 
-    CVAR_REGISTER(&ag_start_hgrenade);
-    CVAR_REGISTER(&ag_start_satchel);
-    CVAR_REGISTER(&ag_start_tripmine);
-    CVAR_REGISTER(&ag_start_snark);
-    CVAR_REGISTER(&ag_start_m203);
-    CVAR_REGISTER(&ag_start_longjump);
-    CVAR_REGISTER(&ag_start_9mmar);
-    CVAR_REGISTER(&ag_start_bockshot);
-    CVAR_REGISTER(&ag_start_uranium);
-    CVAR_REGISTER(&ag_start_bolts);
-    CVAR_REGISTER(&ag_start_rockets);
-    CVAR_REGISTER(&ag_start_357ammo);
+    CVAR_REGISTER(&creative_start_hgrenade);
+    CVAR_REGISTER(&creative_start_satchel);
+    CVAR_REGISTER(&creative_start_tripmine);
+    CVAR_REGISTER(&creative_start_snark);
+    CVAR_REGISTER(&creative_start_m203);
+    CVAR_REGISTER(&creative_start_longjump);
+    CVAR_REGISTER(&creative_start_9mmar);
+    CVAR_REGISTER(&creative_start_bockshot);
+    CVAR_REGISTER(&creative_start_uranium);
+    CVAR_REGISTER(&creative_start_bolts);
+    CVAR_REGISTER(&creative_start_rockets);
+    CVAR_REGISTER(&creative_start_357ammo);
 
-    CVAR_REGISTER(&ag_start_armour);
-    CVAR_REGISTER(&ag_start_health);
+    CVAR_REGISTER(&creative_start_armour);
+    CVAR_REGISTER(&creative_start_health);
 
     CVAR_REGISTER(&ag_dmg_crowbar);
     CVAR_REGISTER(&ag_dmg_glock);
@@ -288,7 +288,7 @@ void AgInitGame()
     CVAR_REGISTER(&ag_vote_map);
     CVAR_REGISTER(&ag_vote_failed_time);
 
-    CVAR_REGISTER(&ag_start_minplayers);
+    CVAR_REGISTER(&creative_start_minplayers);
 
     CVAR_REGISTER(&ag_vote_mp_timelimit_low);
     CVAR_REGISTER(&ag_vote_mp_timelimit_high);

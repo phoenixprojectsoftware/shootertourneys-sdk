@@ -76,32 +76,32 @@ extern cvar_t	ag_ban_health;
 
 extern cvar_t ag_ban_recharg;
 
-extern cvar_t	ag_start_crowbar;
-extern cvar_t	ag_start_glock;
-extern cvar_t	ag_start_357;
-extern cvar_t	ag_start_mp5;
-extern cvar_t	ag_start_shotgun;
-extern cvar_t	ag_start_crossbow;
-extern cvar_t	ag_start_rpg;
-extern cvar_t	ag_start_gauss;
-extern cvar_t	ag_start_egon;
-extern cvar_t	ag_start_hornet;
+extern cvar_t	creative_start_crowbar;
+extern cvar_t	creative_start_glock;
+extern cvar_t	creative_start_357;
+extern cvar_t	creative_start_mp5;
+extern cvar_t	creative_start_shotgun;
+extern cvar_t	creative_start_crossbow;
+extern cvar_t	creative_start_rpg;
+extern cvar_t	creative_start_gauss;
+extern cvar_t	creative_start_egon;
+extern cvar_t	creative_start_hornet;
 
-extern cvar_t	ag_start_hgrenade;
-extern cvar_t	ag_start_satchel;
-extern cvar_t	ag_start_tripmine;
-extern cvar_t	ag_start_snark;
-extern cvar_t	ag_start_m203;
-extern cvar_t	ag_start_longjump;
-extern cvar_t	ag_start_9mmar;
-extern cvar_t	ag_start_bockshot;
-extern cvar_t	ag_start_uranium;
-extern cvar_t	ag_start_bolts;
-extern cvar_t	ag_start_rockets;
-extern cvar_t	ag_start_357ammo;
+extern cvar_t	creative_start_hgrenade;
+extern cvar_t	creative_start_satchel;
+extern cvar_t	creative_start_tripmine;
+extern cvar_t	creative_start_snark;
+extern cvar_t	creative_start_m203;
+extern cvar_t	creative_start_longjump;
+extern cvar_t	creative_start_9mmar;
+extern cvar_t	creative_start_bockshot;
+extern cvar_t	creative_start_uranium;
+extern cvar_t	creative_start_bolts;
+extern cvar_t	creative_start_rockets;
+extern cvar_t	creative_start_357ammo;
 
-extern cvar_t	ag_start_armour;
-extern cvar_t	ag_start_health;
+extern cvar_t	creative_start_armour;
+extern cvar_t	creative_start_health;
 
 extern cvar_t ag_dmg_crowbar;
 extern cvar_t ag_dmg_glock;
@@ -134,7 +134,7 @@ extern cvar_t	ag_vote_allow;
 extern cvar_t	ag_vote_map;
 extern cvar_t	ag_vote_failed_time;
 
-extern cvar_t	ag_start_minplayers;
+extern cvar_t	creative_start_minplayers;
 
 extern cvar_t	ag_vote_mp_timelimit_low;
 extern cvar_t	ag_vote_mp_timelimit_high;

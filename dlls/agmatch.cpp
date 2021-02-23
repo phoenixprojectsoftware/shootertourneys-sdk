@@ -19,9 +19,9 @@ AgMatch::AgMatch()
     m_fMatchStart = 0.0;
     m_fNextSay = 0.0;
     m_fNextHLTV = 0.0;
-    CVAR_SET_FLOAT("sv_ag_match_running", 0);
+    CVAR_SET_FLOAT("sv_creative_match_running", 0);
     CVAR_SET_FLOAT("ag_spectalk", 1);
-    CVAR_SET_FLOAT("sv_ag_show_gibs", 1);
+    CVAR_SET_FLOAT("sv_creative_show_gibs", 1);
 }
 
 AgMatch::~AgMatch()
@@ -105,16 +105,16 @@ void AgMatch::Start(const AgString& sSpawn)
             iPlayers++;
     }
 
-    if (iPlayers < (int)ag_start_minplayers.value)
+    if (iPlayers < (int)creative_start_minplayers.value)
     {
-        UTIL_ClientPrintAll(HUD_PRINTCENTER, UTIL_VarArgs("You need %d players to start a game on this server.", (int)ag_start_minplayers.value));
+        UTIL_ClientPrintAll(HUD_PRINTCENTER, UTIL_VarArgs("You need %d players to start a game on this server.", (int)creative_start_minplayers.value));
         return;
     }
 
     //Set match flag. (All entered after matchstart will go into specmode and they cant respawn.)
-    CVAR_SET_FLOAT("sv_ag_match_running", 1);
+    CVAR_SET_FLOAT("sv_creative_match_running", 1);
     CVAR_SET_FLOAT("ag_spectalk", 0);
-    CVAR_SET_FLOAT("sv_ag_show_gibs", 0);
+    CVAR_SET_FLOAT("sv_creative_show_gibs", 0);
 
     //Set match start time.
     m_fMatchStart = gpGlobals->time + 10.0;
@@ -210,8 +210,8 @@ void AgMatch::MatchStart()
 void AgMatch::Abort()
 {
     //Turn off match
-    CVAR_SET_FLOAT("sv_ag_match_running", 0);
-    CVAR_SET_FLOAT("sv_ag_show_gibs", 1);
+    CVAR_SET_FLOAT("sv_creative_match_running", 0);
+    CVAR_SET_FLOAT("sv_creative_show_gibs", 1);
     CVAR_SET_FLOAT("ag_spectalk", 1);
 
     m_fMatchStart = -1;
